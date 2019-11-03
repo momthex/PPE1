@@ -1,28 +1,28 @@
-<?php 
+<?php  //CONTROLER
+
 class Controller{
-	var $vars = array();
-	var $layout = 'default';
-	function __construct(){ //Constructeur qui vérifie les parametres passées
-		if(isset($_POST)){
-			$this->data = $_POST;    
-		} 
-		if(isset($this->models)){   
-			foreach($this->models as $v){
-				$this->loadModel($v);   
-			}
+	function connexion($login, $password){
+		 if(isset($login) && isset($password) && isAlphaNum($login)){
+		 	require('models\connexion.php');
+
+			//$password = hash('sha512', $password);
+			$connexion = new Conexion;
+			$req = $connexion->reqUserExist($login, $password);
+			$req = $req->fetch(PDO::FETCH_ASSOC);
+
+		 	if ($req == 0) {
+				require('views/acceuilConnexion.php');
+				//Afficher message d'erreur sur la page 
+		 	} else {
+		 		echo'Vous voilà connecter [SEXE] [Nom] [Prenom]';
+		 	}
 		}
 	}
-	
-	function render($filename){ //Fonction qui inclus une page des le layout par défaut
-		extract($this->vars);
-		ob_start();
-		require('../views/'.$filename.'.php');
-		$content_for_layout = ob_get_clean();
-		require(ROOT.'views/'.$this->layout.'.php');
-	}
-	
-	function loadModel($name){ //Fonction qui ..............
-		require_once(ROOT.'models/'.strtolower($name).'.php');        
-		$this->$name = new $name();
+}
+function isAlphaNum($word):bool{
+	if (!preg_match('`^[[:alnum:]]{1,15}$`',$word)) {
+		return false;
+	}else {
+		return true;
 	}
 }

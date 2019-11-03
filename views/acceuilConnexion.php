@@ -1,5 +1,7 @@
-<?php ob_start(); ?>
-<form action="verification.php" method="POST">
+<?php //VUE POUR CE CONNECTER
+ob_start(); 
+?>
+<form action="index.php?action=connect" method="POST">
     <h1>Connexion</h1>
                 
     <label><b>Nom d'utilisateur</b></label>
