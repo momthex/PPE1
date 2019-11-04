@@ -1,12 +1,9 @@
 <?php //MODEL POUR TOUT LES AUTRE MODELS
 class Model{ 
-    // public function __construct() {
-    //     dbConnect();
-    // }
-    protected function dbConnect() {
+    protected $db;
+    public function __construct() {
         try{
-            $db = new PDO('mysql:host=localhost;dbname=ppe_gsb;charset=utf8', 'root', '');
-            return $db;
+            $this->db = new PDO('mysql:host=localhost;dbname=ppe_gsb;charset=utf8', 'root', '');
         }
         catch(Exception $e){
             die('Erreur : '.$e->getMessage());
