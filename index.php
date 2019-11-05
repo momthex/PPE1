@@ -1,10 +1,10 @@
 <?php //ROUTEUR
-require('controlers/Controler.php');
+require('controlers/Controller.php');
 
 if(isset($_GET['action'])){
     if ($_GET['action'] == 'connect') {
-        $test = new Controller;
-        $test->connexion($_POST['username'], $_POST['password']);
+        require('controlers/cConnexion.php');
+        $test = new cConnexion($_POST['username'], $_POST['password']);
     } elseif ($_GET['action'] == 'consulterMessage') {
         # code...
     } elseif ($_GET['action'] == 'consulterPrescription') {
@@ -17,5 +17,7 @@ if(isset($_GET['action'])){
         require('views/actionImpossible.php');
     }
 } else {
-    require('views/acceuilConnexion.php');
+    require('controlers/cAcceuilConnexion.php');
+    $test = new cAcceuilConnexion;
+    //render('acceuilConnexion');
 }

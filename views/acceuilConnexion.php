@@ -10,8 +10,10 @@
 
     <input type="submit" id='submit' value='login' >
     <?php
-        if (isset($errConnexion))
-        if($errConnexion==1 || $errConnexion==2)
+        if($this->geterrConnexion()==1 || $this->geterrConnexion()==2){
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+        } else {
+            
+        }
     ?>
 </form>

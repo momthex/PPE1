@@ -13,10 +13,9 @@
 				</div>
 				<div class="col-md-4 text-center"><h1>
 					<!-- <?php
-						echo $nom;
-						echo $prenom
-					?>
-					-->fff
+						//echo $nom;
+						//echo $prenom
+					?>-->
 					</h1>
 				</div>
 				<div class="col-md-4">
