@@ -19,5 +19,4 @@ if(isset($_GET['action'])){
 } else {
     require('controlers/cAcceuilConnexion.php');
     $test = new cAcceuilConnexion;
-    //render('acceuilConnexion');
 }
