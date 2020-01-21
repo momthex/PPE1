@@ -1,33 +1,33 @@
 <?php
-session_start();
-require('./Controller.php');
 
 class Login extends Controller{
-    function connexion($login, $password){
-        if(isset($login) && isset($password) && isAlphaNum($login)){
-            require'models\connexion.php';
+    
+    function isAlphaNum($word):bool{
+        if (!preg_match('`^[[:alnum:]]{1,15}$`',$word)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    function connexion($login, $password){
+        if(isset($login) && isset($password) && $this->isAlphaNum($login)){
+            $this->loadModel("Connexion");
+            
             $password = hash('sha512', $password);
-            $connexion = new Conexion;
-            $req = $connexion->reqUserExist($login, $password);
-            $req = $req->fetch(PDO::FETCH_ASSOC);
+            $req = $this->model->reqUserExist($login, $password);
+            echo($req);
 
             if ($req == 0) { //Si l'utilisateur n'est pas trouvé
-                $errConnexion = 1;
-                render('acceuilConnexion');
+                $_SESSION['err_connexion'] = 1;
+                header('Location: ./views/acceuilConnexion.php');
+                exit();
             } else {
-                echo'Vous voilà connecter [SEXE] [Nom] [Prenom]';
-            }
-        }
-        
-        function isAlphaNum($word):bool{
-            if (!preg_match('`^[[:alnum:]]{1,15}$`',$word)) {
-                return false;
-            } else {
-                return true;
+                $_SESSION['err_connexion'] = 0;
+                $_SESSION['id'] = 1;
+                header('Location: ./views/acceuilMembre.php');
+                exit();
             }
         }
     }
 }
-
-echo("test");

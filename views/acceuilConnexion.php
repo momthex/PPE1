@@ -1,5 +1,7 @@
-<!-- VUE POUR CE CONNECTER -->
-<form action="index.php?action=connect" method="POST">
+<?php session_start();
+ob_start(); //VUE POUR CE CONNECTER
+?>
+<form action="../index.php?action=connect" method="POST">
     <h1>Connexion</h1>
                 
     <label><b>Nom d'utilisateur</b></label>
@@ -10,8 +12,11 @@
 
     <input type="submit" id='submit' value='login' >
     <?php
-        if (isset($errConnexion))
-        if($errConnexion==1 || $errConnexion==2)
+        if ($_SESSION['err_connexion']==1){
             echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+        }
     ?>
 </form>
+
+<?php $content_for_layout = ob_get_clean(); ?>
+<?php require('layout.php'); ?>

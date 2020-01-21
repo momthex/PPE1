@@ -1,6 +1,6 @@
 <?php //ROUTEUR
 session_start();
-require('controlers/Controler.php');
+require('controlers/Controller.php');
 
 if(isset($_GET['action'])){
     if ($_GET['action'] == 'connect') {
@@ -13,11 +13,16 @@ if(isset($_GET['action'])){
         # code...
     } elseif ($_GET['action'] == 'consulterCalendrier') {
         # code...
-    } elseif ($_GET['action'] == 'deconect') {
-        # code...
+    } elseif ($_GET['action'] == 'disconect') {
+        session_destroy();
+        header('Location: ./views/acceuilConnexion.php');
+        exit();
     } else{
-        require('views/actionImpossible.php');
+        header('Location: ./views/actionImpossible.php');
+        exit();
     }
 } else {
-    require('views/acceuilConnexion.php');
+    $_SESSION['err_connexion'] = 0;
+    header('Location: ./views/acceuilConnexion.php');
+    exit();
 }
