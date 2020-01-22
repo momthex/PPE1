@@ -6,11 +6,12 @@ class Connexion extends Model{
     public function reqUserExist($login, $password){
         $req = $this->db->prepare("SELECT * FROM personne WHERE login= ? AND pass_word= ?");
         $req->execute(array($login, $password));
-        
-        $rs = null;
+        $user = new User;
         while ($data = $req->fetch()){
-            $rs = $data['id'];
+            $this->user.setId($data['id']);
+            $this->user.setId($data['nom']);
+            $this->user.setId($data['prenom']);
         }
-        return $rs;
+        return $user;
     }
 }

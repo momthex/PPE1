@@ -1,6 +1,7 @@
 <?php //ROUTEUR
 session_start();
 require('controlers/Controller.php');
+require_once('classes/User.php');
 
 if(isset($_GET['action'])){
     if ($_GET['action'] == 'connect') {
