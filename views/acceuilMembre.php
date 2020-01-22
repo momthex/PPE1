@@ -1,4 +1,5 @@
-<?php //VUE ACCEUIL MEMBRE
+<?php require_once('../classes/User.php');
+session_start(); //VUE ACCEUIL MEMBRE
 ob_start(); 
 ?>
 

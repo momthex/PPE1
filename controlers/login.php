@@ -17,14 +17,13 @@ class Login extends Controller{
             $password = hash('sha512', $password);
             $req = $this->model->reqUserExist($login, $password);
 
-            if ($req == 0) { //Si l'utilisateur n'est pas trouvé
+            if ($req->id < 1) { //Si l'utilisateur n'est pas trouvé
                 $_SESSION['err_connexion'] = 1;
                 header('Location: ./views/acceuilConnexion.php');
                 exit();
             } else {
-                $_SESSION['user'] = $this->req;
+                $_SESSION['user'] = $req;
                 $_SESSION['err_connexion'] = 0;
-                $_SESSION['id'] = 1;
                 header('Location: ./views/acceuilMembre.php');
                 exit();
             }

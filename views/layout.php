@@ -12,17 +12,22 @@
 					<img src="../asset/image/logogsb.png">
 				</div>
 				<div class="col-md-4 text-center"><h1>
-					<!-- <?php
-						echo $nom;
-						echo $prenom
+					<?php
+						if (isset($_SESSION['user'])){
+							echo($_SESSION['user']->__getNom());
+							echo(" ");
+							echo($_SESSION['user']->__getPrenom());
+						}
 					?>
-					-->fff
 					</h1>
 				</div>
 				<div class="col-md-4">
-					<form action="../index.php?action=disconect" method="POST">
-						<input type="submit" id='submit' value='Deconnexion' >
-					</form>
+					<?php
+						if (isset($_SESSION['user'])){?>
+							<form action="../index.php?action=disconect" method="POST">
+								<input type="submit" id='submit' value='Deconnexion' >
+							</form>
+						<?php } ?>
 				</div>
 		</div>
 
