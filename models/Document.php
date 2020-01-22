@@ -15,6 +15,9 @@ class M_Document extends Model{
         
     }
     public function delDocument($id){
+        $req = $this->db->prepare("DELETE FROM document WHERE id= ?");
+        $rs = $req->execute(array($id));
         
+        return $rs;
     }
 }
