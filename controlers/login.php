@@ -22,7 +22,7 @@ class Login extends Controller{
                 header('Location: ./views/acceuilConnexion.php');
                 exit();
             } else {
-                $_SESSION('user') = $this->req;
+                $_SESSION['user'] = $this->req;
                 $_SESSION['err_connexion'] = 0;
                 $_SESSION['id'] = 1;
                 header('Location: ./views/acceuilMembre.php');

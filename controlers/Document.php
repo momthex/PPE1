@@ -1,6 +1,6 @@
 <?php
 
-class cRendezVous extends Controller{
+class cDocument extends Controller{
     public function __construct() {
         
     }

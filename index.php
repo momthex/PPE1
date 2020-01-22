@@ -8,12 +8,12 @@ if(isset($_GET['action'])){
         require('controlers/login.php');
         $connect = new Login;
         $connect->connexion($_POST['username'], $_POST['password']);
-    } elseif ($_GET['action'] == 'consulterMessage') {
-        # code...
     } elseif ($_GET['action'] == 'consulterPrescription') {
-        # code...
+        require('controlers/Document.php');
+        $controlDocument = new cDocument;
     } elseif ($_GET['action'] == 'consulterCalendrier') {
-        # code...
+        require('controlers/RendezVous.php');
+        $controlRdv = new cRendezVous;
     } elseif ($_GET['action'] == 'disconect') {
         session_destroy();
         header('Location: ./views/acceuilConnexion.php');

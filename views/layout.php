@@ -20,7 +20,9 @@
 					</h1>
 				</div>
 				<div class="col-md-4">
-				<!-- Bouton deconnexion -->
+					<form action="../index.php?action=disconect" method="POST">
+						<input type="submit" id='submit' value='Deconnexion' >
+					</form>
 				</div>
 		</div>
 

@@ -12,8 +12,10 @@ ob_start(); //VUE POUR CE CONNECTER
 
     <input type="submit" id='submit' value='login' >
     <?php
-        if ($_SESSION['err_connexion']==1){
-            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+        if (isset($_SESSION['err_connexion'])){
+            if ($_SESSION['err_connexion']==1){
+                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+            }
         }
     ?>
 </form>
