@@ -1,11 +1,12 @@
 <?php
 
 class RandezVous{
-    public function __construct($id, $id_patient, $id_docteur, $date_rdv) {
+    public function __construct($id, $id_patient, $id_docteur, $date_rdv, $commentaire) {
         $this->id = $id;
         $this->id_patient = $id_patient;
         $this->id_docteur = $id_docteur;
         $this->date_rdv = $date_rdv;
+        $this->commentaire = $commentaire;
     }
 
     public function __setId($value){
@@ -30,9 +31,16 @@ class RandezVous{
     }
 
     public function __setDate_rdv($value){
-        $this->prenom = $value;
+        $this->date_rdv = $value;
     }
     public function __getDate_rdv(){
         return $this->date_rdv;
+    }
+
+    public function __setCommentaire($value){
+        $this->commentaire = $value;
+    }
+    public function __getCommentaire(){
+        return $this->commentaire;
     }
 }
