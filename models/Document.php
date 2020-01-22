@@ -4,12 +4,26 @@ require_once("models/model.php");
 class M_Document extends Model{
 
     public function listDocumentPatient($id){
-        
-        //return tableau de document
+        $req = $this->db->prepare("SELECT * FROM document WHERE id_patient = ?");
+        $req->execute(array($id));
+        $listeDocument = array();
+
+        while ($data = $req->fetch()){
+            $doc = new Document();//Remplir les donées!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            array_push($listeDocument, $doc);
+        }
+        return $listeDocument;
     }
     public function listDocumentDocteur($id){
-        
-        //return tableau de document
+        $req = $this->db->prepare("SELECT * FROM document WHERE id_docteur = ?");
+        $req->execute(array($id));
+        $listeDocument = array();
+
+        while ($data = $req->fetch()){
+            $doc = new Document();//Remplir les donées!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            array_push($listeDocument, $doc);
+        }
+        return $listeDocument;
     }
     public function addDocument($file){
         
