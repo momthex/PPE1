@@ -3,6 +3,27 @@ require_once("models/model.php");
 
 class M_RendezVous extends Model{
 
+    public function isDocteur($id){
+        $req = $this->db->prepare("SELECT * FROM docteur WHERE id_personne=?");
+        $req->execute(array($id));
+        while ($data = $req->fetch()){
+            return true;
+        }
+        return false;
+    }
+
+    public function listPatient($id){
+        $req = $this->db->prepare("SELECT * FROM patient INNER JOIN personne ON personne.id=patient.id_personne");
+        $req->execute(array($id));
+        $listPatient = array();
+
+        while ($data = $req->fetch()){
+            $patient = new User($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['heure'], $data['commentaire']);
+            array_push($listPatient, $patient);
+        }
+        return $listeRdv;
+    }
+
     public function listRdvPatient($id){
         $req = $this->db->prepare("SELECT * FROM rendez_vous WHERE id_patient = ?");
         $req->execute(array($id));
@@ -29,7 +50,7 @@ class M_RendezVous extends Model{
 
     public function addRdv($id_patient, $date, $heure, $commentaire){
         $req = $this->db->prepare("INSERT INTO rendez_vous (id_patient, id_docteur, date, heure, commentaire) VALUES (?, ?, ?, ?, ?)");
-        $rs = $req->execute(array($id_patient, $ _SESSION['user']->getId(), $date, $heure, $commentaire));
+        $rs = $req->execute(array($id_patient, $_SESSION['user']->getId(), $date, $heure, $commentaire));
         
         return $rs;
     }

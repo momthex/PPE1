@@ -9,7 +9,7 @@ class Controller{
 		require'views/layout.php';
 	}
 	function loadModel($name){
-		require_once('models/'.$name.'.php');
+		require_once('./models/'.$name.'.php');
 		$this->model = new $name();
 	}
 }
