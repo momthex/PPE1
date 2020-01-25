@@ -1,4 +1,5 @@
 <?php require_once('../classes/User.php');
+require_once('../classes/RendezVous.php');
 session_start(); //VUE ACCEUIL MEMBRE
 ob_start(); 
 ?>
@@ -7,7 +8,7 @@ ob_start();
     <?php
     foreach ($_SESSION['listeRdv'] as $rdv) {?>
         <div class=rdv">
-        <?php echo($rdv['nom']+" "+$rdv['prenom']+" le "+$rdv['date']+" à "+$rdv['heure']);?>
+        <?php echo($rdv->__getDate_rdv()." ".$rdv->__getCommentaire());?>
         </div>
     <?php }
     ?>
@@ -20,9 +21,6 @@ ob_start();
         <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
         <label><b>Date</b></label>
-        <input type="password" placeholder="Entrer le Date" name="password" required>
-
-        <label><b>Heure</b></label>
         <input type="password" placeholder="Entrer le Date" name="password" required>
 
         <label><b>Commentaire</b></label>

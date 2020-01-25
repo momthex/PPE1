@@ -12,25 +12,25 @@ class M_RendezVous extends Model{
         return false;
     }
 
-    public function listPatient($id){
+    public function listPatient(){
         $req = $this->db->prepare("SELECT * FROM patient INNER JOIN personne ON personne.id=patient.id_personne");
-        $req->execute(array($id));
+        $req->execute();
         $listPatient = array();
-
-        while ($data = $req->fetch()){
-            $patient = new User($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['heure'], $data['commentaire']);
+        
+        foreach($req as $data){
+            $patient = new User($data['id'], $data['nom'], $data['prenom']);
             array_push($listPatient, $patient);
         }
-        return $listeRdv;
+        return $listPatient;
     }
 
     public function listRdvPatient($id){
         $req = $this->db->prepare("SELECT * FROM rendez_vous WHERE id_patient = ?");
         $req->execute(array($id));
         $listeRdv = array();
-
+        
         while ($data = $req->fetch()){
-            $rdv = new RendezVous($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['heure'], $data['commentaire']);
+            $rdv = new RendezVous($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['commentaire']);
             array_push($listeRdv, $rdv);
         }
         return $listeRdv;
@@ -42,7 +42,7 @@ class M_RendezVous extends Model{
         $listeRdv = array();
 
         while ($data = $req->fetch()){
-            $rdv = new RendezVous($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['heure'], $data['commentaire']);
+            $rdv = new RendezVous($data['id'], $data['id_patient'], $data['id_docteur'], $data['date'], $data['commentaire']);
             array_push($listeRdv, $rdv);
         }
         return $listeRdv;

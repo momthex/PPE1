@@ -1,7 +1,7 @@
 <?php
 
-class RandezVous{
-    public function __construct($id, $id_patient, $id_docteur, $date_rdv, $heure_rdv, $commentaire) {
+class RendezVous{
+    public function __construct($id, $id_patient, $id_docteur, $date_rdv, $commentaire) {
         $this->id = $id;
         $this->id_patient = $id_patient;
         $this->id_docteur = $id_docteur;
