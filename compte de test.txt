@@ -1,0 +1,13 @@
+Comptes docteur :
+    - Login : doc1
+    - Passw : DrMaison_6
+
+    - Login : doc2
+    - Passw : GoodDoc2$
+
+Comptes patient :
+    - Login : pat1
+    - Passw : BreBad70;
+
+    - Login : pat2
+    - Passw : HarPot9,75

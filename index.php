@@ -20,6 +20,9 @@ if(isset($_GET['action'])){
         session_destroy();
         header('Location: ./views/acceuilConnexion.php');
         exit();
+    } elseif ($_GET['action'] == 'addRdv') {
+        require('controlers/AddRendezVous.php');
+        $addRdv = new cAddRendezVous;
     } else{
         header('Location: ./views/actionImpossible.php');
         exit();

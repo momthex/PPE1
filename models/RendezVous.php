@@ -48,9 +48,10 @@ class M_RendezVous extends Model{
         return $listeRdv;
     }
 
-    public function addRdv($id_patient, $date, $heure, $commentaire){
-        $req = $this->db->prepare("INSERT INTO rendez_vous (id_patient, id_docteur, date, heure, commentaire) VALUES (?, ?, ?, ?, ?)");
-        $rs = $req->execute(array($id_patient, $_SESSION['user']->getId(), $date, $heure, $commentaire));
+    public function addRdv($id_patient, $date, $commentaire){
+        $req = $this->db->prepare("INSERT INTO rendez_vous (id_patient, id_docteur, date, commentaire) VALUES (?, ?, ?, ?)");
+
+        $rs = $req->execute(array($id_patient, $_SESSION['user']->__getId(), $date, $commentaire));
         
         return $rs;
     }
