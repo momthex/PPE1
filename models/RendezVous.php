@@ -1,5 +1,5 @@
 <?php //MODEL CONNEXION
-require_once("models/model.php");
+require_once(ROOT."models/model.php");
 
 class M_RendezVous extends Model{
 

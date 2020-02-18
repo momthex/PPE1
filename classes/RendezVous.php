@@ -6,7 +6,6 @@ class RendezVous{
         $this->id_patient = $id_patient;
         $this->id_docteur = $id_docteur;
         $this->date_rdv = $date_rdv;
-        $this->heure_rdv = $heure_rdv;
         $this->commentaire = $commentaire;
     }
 

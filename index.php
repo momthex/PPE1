@@ -1,4 +1,5 @@
 <?php //ROUTEUR
+define("ROOT", "./");
 require('controlers/Controller.php');
 require_once('classes/User.php');
 require_once('classes/RendezVous.php');
@@ -20,9 +21,12 @@ if(isset($_GET['action'])){
         session_destroy();
         header('Location: ./views/acceuilConnexion.php');
         exit();
-    } elseif ($_GET['action'] == 'addRdv') {
+    } elseif ($_GET['action'] == 'addRdv' && $_SESSION['isDocteur'] == TRUE) {
         require('controlers/AddRendezVous.php');
         $addRdv = new cAddRendezVous;
+    } elseif ($_GET['action'] == 'delRdv' && $_SESSION['isDocteur'] == TRUE) {
+        require('controlers/DelRendezVous.php');
+        $addRdv = new cDelRendezVous;
     } else{
         header('Location: ./views/actionImpossible.php');
         exit();

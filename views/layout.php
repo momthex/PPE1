@@ -21,7 +21,7 @@
 					?>
 					</h1>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" style="display: flex; justify-content: flex-end;">
 					<?php
 						if (isset($_SESSION['user'])){?>
 							<form action="../index.php?action=disconect" method="POST">
@@ -39,8 +39,8 @@
 
 
 
-		<div class="text-center piedpage">
-			<h1>CONTENT BAS DE PAGE</h1>
+		<div class="text-center piedpage row">
+			<h1>GSB entreprise</h1> Copyright © tous droits réservés 
 		</div>
 	<BODY> 
 </HTML>
