@@ -6,7 +6,7 @@
 		<link href="../asset/css/layout.css" rel="stylesheet" crossorigin="anonymous">
 		<script src="../asset/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	</HEAD> 
-	<BODY>
+	<BODY style="max-width:99%;">
 			<div class="row entete">
 				<div class="col-md-4">
 					<img src="../asset/image/logogsb.png">

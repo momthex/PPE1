@@ -11,3 +11,9 @@ Comptes patient :
 
     - Login : pat2
     - Passw : HarPot9,75
+
+    - Login : pat3
+    - Passw : 123.BateMo
+
+    - Login : pat4
+    - Passw : Shut'5Isl
